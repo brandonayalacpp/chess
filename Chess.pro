@@ -10,9 +10,16 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    src/manager/ChessManager.cpp \
+    src/model/BoardModel.cpp \
+    src/view/ChessView.cpp
 
 HEADERS += \
+    inc/Common.h \
+    inc/manager/ChessManager.h \
+    inc/model/BoardModel.h \
+    inc/view/ChessView.h \
     mainwindow.h
 
 # Default rules for deployment.
