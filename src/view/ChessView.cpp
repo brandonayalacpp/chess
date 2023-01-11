@@ -1,6 +1,12 @@
 #include "inc/view/ChessView.h"
 
+#include <QGridLayout>
+#include <QLabel>
+#include <QDebug>
+#include <QMainWindow>
+
 using namespace View;
+using namespace Common;
 
 ChessView::ChessView()
         :mMainWidget(new QWidget),
@@ -14,8 +20,8 @@ void ChessView::initView()
 {
     drawBoard();
     mMainWidget->setLayout(mLayoutBoard);
-    mMainWindow.setCentralWidget(mMainWidget);
-    mMainWindow.show();
+    mMainWindow->setCentralWidget(mMainWidget);
+    mMainWindow->show();
 }
 void ChessView::movePiece(CoordinatePiece oldCoordinate, CoordinatePiece newCoordinate)
 {}
@@ -37,19 +43,19 @@ void ChessView::drawBoard()
         for(int j = 0; j < BOARD_SIZE; ++j)
         {
             //QLabel mBlackCell;
-            mBlackCell[i][j].setFixedHeight(50);
-            mBlackCell[i][j].setFixedWidth(50);
+            mBlackCell[i][j]->setFixedHeight(50);
+            mBlackCell[i][j]->setFixedWidth(50);
 
             if(!isNumberEven(i + 1))
             {
                 if(isNumberEven(j + 1))
                 {
-                    mBlackCell[i][j].setStyleSheet("QLabel { background-color : black; color : blue; }");
+                    mBlackCell[i][j]->setStyleSheet("QLabel { background-color : black; color : blue; }");
 
                 }
                 else
                 {
-                    mBlackCell[i][j].setStyleSheet("QLabel { background-color : white; color : blue; }");
+                    mBlackCell[i][j]->setStyleSheet("QLabel { background-color : white; color : blue; }");
                 }
 
             }
@@ -57,17 +63,17 @@ void ChessView::drawBoard()
             {
                 if(!isNumberEven(j + 1))
                 {
-                    mBlackCell[i][j].setStyleSheet("QLabel { background-color : black; color : blue; }");
+                    mBlackCell[i][j]->setStyleSheet("QLabel { background-color : black; color : blue; }");
 
                 }
                 else
                 {
-                    mBlackCell[i][j].setStyleSheet("QLabel { background-color : white; color : blue; }");
+                    mBlackCell[i][j]->setStyleSheet("QLabel { background-color : white; color : blue; }");
                 }
             }
 
-            //mBlackCell[i][j].setStyleSheet("QLabel { background-color : red; color : blue; }");
-            mLayoutBoard->addWidget(&mBlackCell[i][j],i,j);
+            //mBlackCell[i][j]->setStyleSheet("QLabel { background-color : red; color : blue; }");
+            mLayoutBoard->addWidget(mBlackCell[i][j],i,j);
         }
     }
 

@@ -1,14 +1,14 @@
 #ifndef CHESSVIEW_H
 #define CHESSVIEW_H
 
-#include <QGridLayout>
-#include <QLabel>
-#include <QDebug>
-#include <QMainWindow>
+#include <QObject>
 
 #include "inc/Common.h"
 
-using namespace Common;
+class QGridLayout;
+class QLabel;
+class QDebug;
+class QMainWindow;
 
 namespace View
 {
@@ -20,24 +20,24 @@ namespace View
 
 
         void initView();
-        void movePiece(CoordinatePiece oldCoordinate, CoordinatePiece newCoordinate);
+        void movePiece(Common::CoordinatePiece oldCoordinate, Common::CoordinatePiece newCoordinate);
 
     public slots:
-        void updateBoard(CoordinatePiece cordinate, CoordinatePiece newCoordinate);
+        void updateBoard(Common::CoordinatePiece cordinate, Common::CoordinatePiece newCoordinate);
     signals:
-        void notifyBoardChange(CoordinatePiece oldCoordinate, CoordinatePiece newCoordinate);
+        void notifyBoardChange(Common::CoordinatePiece oldCoordinate, Common::CoordinatePiece newCoordinate);
 
     private:
         bool isNumberEven(int number);
 
         void drawBoard();
 
-        QMainWindow mMainWindow;
+        QMainWindow *mMainWindow;
         QWidget *mMainWidget;
         QGridLayout *mLayoutBoard;
-        QLabel mPawn;
-        QLabel mWhiteCell;
-        QLabel mBlackCell[8][8];
+        QLabel *mPawn;
+        QLabel *mWhiteCell;
+        QLabel *mBlackCell[8][8];
     };
 }
 
