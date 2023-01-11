@@ -1,26 +1,33 @@
 #ifndef CHESSMANAGER_H
 #define CHESSMANAGER_H
 
-#include "inc/view/ChessView.h"
-#include "inc/model/BoardModel.h"
+#include "inc/Common.h"
 
-using namespace View;
-using namespace Model;
+namespace View
+{
+    class ChessView;
+}
+
+namespace Model
+{
+    class BoardModel;
+}
 
 namespace Manager
 {
     class ChessManager
     {
     public:
-        ChessManager(ChessView &chessView, BoardModel &boardModel);
+        ChessManager(View::ChessView *chessView, Model::BoardModel *boardModel);
 
         void init();
 
-        void movePiece(CoordinatePiece oldCoordinate, CoordinatePiece newCoordinate);
+        void movePiece(Common::CoordinatePiece oldCoordinate,
+                       Common::CoordinatePiece newCoordinate);
 
     private:
-        ChessView &mChessView;
-        BoardModel &mBoardModel;
+        View::ChessView *mChessView;
+        Model::BoardModel *mBoardModel;
     };
 }
 

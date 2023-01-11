@@ -4,18 +4,22 @@
 #include <QObject>
 
 #include "inc/manager/ChessManager.h"
+#include "inc/model/BoardModel.h"
+#include "inc/view/ChessView.h"
 
 
 
 using namespace View;
 using namespace Manager;
+using namespace Model;
+
 class Startup
 {
 public:
     Startup()
         :mChessView(new ChessView),
          mBoardModel(new BoardModel),
-         mChessManager(new ChessManager(*mChessView,*mBoardModel))
+         mChessManager(new ChessManager(mChessView,mBoardModel))
     {}
 
     void init()
