@@ -9,7 +9,8 @@ using namespace View;
 using namespace Common;
 
 ChessView::ChessView()
-        :mMainWidget(new QWidget),
+        :mMainWindow(new QMainWindow),
+         mMainWidget(new QWidget),
          mLayoutBoard(new QGridLayout)
 {
 
@@ -43,6 +44,7 @@ void ChessView::drawBoard()
         for(int j = 0; j < BOARD_SIZE; ++j)
         {
             //QLabel mBlackCell;
+            mBlackCell[i][j] = new QLabel;
             mBlackCell[i][j]->setFixedHeight(50);
             mBlackCell[i][j]->setFixedWidth(50);
 
