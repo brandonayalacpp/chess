@@ -20,5 +20,9 @@ namespace Common
 }
 
 #define BOARD_SIZE 8
+#define INDEX_LEFT_EDGE 0
+#define INDEX_RIGHT_EDGE 9
+#define INDEX_TOP_EDGE 0
+#define INDEX_BOTTOM_EDGE 9
 
 #endif // COMMON_H

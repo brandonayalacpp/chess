@@ -37,7 +37,7 @@ namespace View
         QGridLayout *mLayoutBoard;
         QLabel *mPawn;
         QLabel *mWhiteCell;
-        QLabel *mBlackCell[8][8];
+        QLabel *mBlackCell[BOARD_SIZE][BOARD_SIZE];
     };
 }
 

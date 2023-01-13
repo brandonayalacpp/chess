@@ -16,7 +16,6 @@ ChessView::ChessView()
 
 }
 
-
 void ChessView::initView()
 {
     drawBoard();
@@ -39,6 +38,33 @@ bool ChessView::isNumberEven(int number)
 
 void ChessView::drawBoard()
 {
+//    QLabel *rowNames =  new QLabel("1 2 3 4 5 6 7 8");
+//    rowNames->setStyleSheet("QLabel { background-color : blue; color : black; }");
+//    mLayoutBoard->addWidget(rowNames,0,0,1,10);
+
+
+    for(int i =  1; i <= BOARD_SIZE ; ++i)
+    {
+        QLabel *rowName =  new QLabel;
+        rowName->setAlignment(Qt::AlignCenter);
+        rowName->setText(QString::number(i));
+        rowName->setFixedHeight(50);
+        rowName->setFixedWidth(50);
+        //rowName->setStyleSheet("QLabel { background-color : blue; color : black; }");
+        mLayoutBoard->addWidget(rowName,0,i,1,1);
+
+
+//        mBlackCell[i][INDEX_LEFT_EDGE] = new QLabel;
+//        mBlackCell[i][INDEX_LEFT_EDGE]->setFixedHeight(50);
+//        mBlackCell[i][INDEX_LEFT_EDGE]->setFixedWidth(50);
+//        mBlackCell[i][INDEX_LEFT_EDGE]->setStyleSheet("QLabel { background-color : blue; color : black; }");
+
+
+//            mBlackCell[i][INDEX_LEFT_EDGE]->setText(QString(i-1));
+
+    }
+
+
     for(int i = 0; i < BOARD_SIZE; ++i)
     {
         for(int j = 0; j < BOARD_SIZE; ++j)
@@ -74,8 +100,7 @@ void ChessView::drawBoard()
                 }
             }
 
-            //mBlackCell[i][j]->setStyleSheet("QLabel { background-color : red; color : blue; }");
-            mLayoutBoard->addWidget(mBlackCell[i][j],i,j);
+            mLayoutBoard->addWidget(mBlackCell[i][j],i + 1,j + 1,1,1);
         }
     }
 
