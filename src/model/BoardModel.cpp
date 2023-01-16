@@ -4,15 +4,20 @@ using namespace Model;
 
 void BoardModel::initBoardModel()
 {}
-PieceID BoardModel::retrievePieceID(CoordinatePiece oldCoordinate)
+Piece BoardModel::retrievePiece(CoordinatePiece coordinate)
 {
-    return PieceID::PID_EMPTY;
+    return Piece::PID_EMPTY;
 }
-void BoardModel::updateBoard(CoordinatePiece oldCoordinate, CoordinatePiece newCoordinate)
-{}
 
-void BoardModel::test(CoordinatePiece cordinate, CoordinatePiece newCoordinate)
+void BoardModel::setPiece(CoordinatePiece coordinatePiece, Piece piece)
 {
+    int row = coordinatePiece.row;
+    int col = coordinatePiece.col;
 
+    mBoard[row][col] = piece;
+    emit updateBoard(coordinatePiece, piece);
 }
+
+
+
 

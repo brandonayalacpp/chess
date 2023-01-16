@@ -14,16 +14,13 @@ namespace Model
     Q_OBJECT
     public:
         void initBoardModel();
-        PieceID retrievePieceID(CoordinatePiece oldCoordinate);
-        void updateBoard(CoordinatePiece oldCoordinate, CoordinatePiece newCoordinate);
-
-    public slots:
-        void test(CoordinatePiece cordinate, CoordinatePiece newCoordinate);
+        Piece retrievePiece(CoordinatePiece coordinate);
+        void setPiece(CoordinatePiece coordinatePiece, Piece piece);
 
     signals:
-        void notifyBoardChange(CoordinatePiece oldCoordinate, CoordinatePiece newCoordinate);
+        void updateBoard(CoordinatePiece coordinatePiece, Piece Piece);
     private:
-        PieceID mBoard[BOARD_SIZE][BOARD_SIZE];
+        Piece mBoard[BOARD_SIZE][BOARD_SIZE];
 
     };
 }

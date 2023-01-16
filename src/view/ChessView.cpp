@@ -11,13 +11,16 @@ using namespace Common;
 ChessView::ChessView()
         :mMainWindow(new QMainWindow),
          mMainWidget(new QWidget),
-         mLayoutBoard(new QGridLayout)
+         mLayoutBoard(new QGridLayout),
+         mPieceMap(new QMap<Piece,QString>)
 {
 
 }
 
 void ChessView::initView()
 {
+    mPieceMap->insert(Piece::PID_PAWN_DARK, "P");
+    mPieceMap->insert(Piece::PID_EMPTY, " ");
     drawBoard();
     mMainWidget->setLayout(mLayoutBoard);
     mMainWindow->setCentralWidget(mMainWidget);
@@ -26,8 +29,14 @@ void ChessView::initView()
 void ChessView::movePiece(CoordinatePiece oldCoordinate, CoordinatePiece newCoordinate)
 {}
 
-void ChessView::updateBoard(CoordinatePiece cordinate, CoordinatePiece newCoordinate)
+void ChessView::updateBoard(CoordinatePiece coordinate, Piece piece)
 {
+    int row = coordinate.row;
+    int col = coordinate.col;
+    QString stringPiece = (*mPieceMap)[piece];
+    mCells[row][col]->setText(stringPiece);
+    //mCells[row][col]->setStyleSheet("QLabel{font-size: 22pt;}");
+
 
 }
 
@@ -62,6 +71,8 @@ void ChessView::drawBoard()
     {
         QLabel *columnName =  createCellName(columnNames[i-1]);
         QLabel *rowName =  createCellName(rowNames[i-1]);
+        columnName->setStyleSheet("QLabel{font-size: 18pt;}");
+        rowName->setStyleSheet("QLabel{font-size: 18pt;}");
         mLayoutBoard->addWidget(columnName,0,i,1,1);
         mLayoutBoard->addWidget(rowName,i,0,1,1);
     }
@@ -74,17 +85,18 @@ void ChessView::drawBoard()
             mCells[i][j] = new QLabel;
             mCells[i][j]->setFixedHeight(CELL_SIZE);
             mCells[i][j]->setFixedWidth(CELL_SIZE);
+            mCells[i][j]->setAlignment(Qt::AlignCenter);
 
             if(!isNumberEven(i + 1))
             {
                 if(isNumberEven(j + 1))
                 {
-                    mCells[i][j]->setStyleSheet("QLabel { background-color : black; color : blue; }");
+                    mCells[i][j]->setStyleSheet("QLabel { background-color : black; color : blue; font-size: 22pt; }");
 
                 }
                 else
                 {
-                    mCells[i][j]->setStyleSheet("QLabel { background-color : white; color : blue; }");
+                    mCells[i][j]->setStyleSheet("QLabel { background-color : white; color : blue; font-size: 22pt; }");
                 }
 
             }

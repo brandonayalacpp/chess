@@ -3,7 +3,7 @@
 
 namespace Common
 {
-    enum PieceID
+    enum Piece
     {
         PID_EMPTY,
         PID_PAWN_WHITE,

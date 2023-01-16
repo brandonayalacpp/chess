@@ -23,9 +23,8 @@ namespace View
         void movePiece(Common::CoordinatePiece oldCoordinate, Common::CoordinatePiece newCoordinate);
 
     public slots:
-        void updateBoard(Common::CoordinatePiece cordinate, Common::CoordinatePiece newCoordinate);
-    signals:
-        void notifyBoardChange(Common::CoordinatePiece oldCoordinate, Common::CoordinatePiece newCoordinate);
+        void updateBoard(Common::CoordinatePiece coordinate, Common::Piece piece);
+
 
     private:
         bool isNumberEven(int number);
@@ -37,6 +36,7 @@ namespace View
         QGridLayout *mLayoutBoard;
         QLabel *mPawn;
         QLabel *mCells[BOARD_SIZE][BOARD_SIZE];
+        QMap<Common::Piece, QString> *mPieceMap;
     };
 }
 
