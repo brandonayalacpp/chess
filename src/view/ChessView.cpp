@@ -36,34 +36,35 @@ bool ChessView::isNumberEven(int number)
     return number % 2 == 0 ? true:false;
 }
 
+QLabel* ChessView::createCellName(const QString &cellName)
+{
+    QLabel *cellNameLabel =  new QLabel;
+    cellNameLabel->setAlignment(Qt::AlignCenter);
+    cellNameLabel->setText(cellName);
+    cellNameLabel->setFixedHeight(CELL_SIZE);
+    cellNameLabel->setFixedWidth(CELL_SIZE);
+
+    return cellNameLabel;
+
+}
+
+
+
+
+
 void ChessView::drawBoard()
 {
-//    QLabel *rowNames =  new QLabel("1 2 3 4 5 6 7 8");
-//    rowNames->setStyleSheet("QLabel { background-color : blue; color : black; }");
-//    mLayoutBoard->addWidget(rowNames,0,0,1,10);
 
+    QStringList columnNames = {"1","2","3","4","5","6","7","8"};
+    QStringList rowNames = {"A","B","C","D","E","F","G","H"};
 
     for(int i =  1; i <= BOARD_SIZE ; ++i)
     {
-        QLabel *rowName =  new QLabel;
-        rowName->setAlignment(Qt::AlignCenter);
-        rowName->setText(QString::number(i));
-        rowName->setFixedHeight(50);
-        rowName->setFixedWidth(50);
-        //rowName->setStyleSheet("QLabel { background-color : blue; color : black; }");
-        mLayoutBoard->addWidget(rowName,0,i,1,1);
-
-
-//        mBlackCell[i][INDEX_LEFT_EDGE] = new QLabel;
-//        mBlackCell[i][INDEX_LEFT_EDGE]->setFixedHeight(50);
-//        mBlackCell[i][INDEX_LEFT_EDGE]->setFixedWidth(50);
-//        mBlackCell[i][INDEX_LEFT_EDGE]->setStyleSheet("QLabel { background-color : blue; color : black; }");
-
-
-//            mBlackCell[i][INDEX_LEFT_EDGE]->setText(QString(i-1));
-
+        QLabel *columnName =  createCellName(columnNames[i-1]);
+        QLabel *rowName =  createCellName(rowNames[i-1]);
+        mLayoutBoard->addWidget(columnName,0,i,1,1);
+        mLayoutBoard->addWidget(rowName,i,0,1,1);
     }
-
 
     for(int i = 0; i < BOARD_SIZE; ++i)
     {
@@ -71,8 +72,8 @@ void ChessView::drawBoard()
         {
             //QLabel mBlackCell;
             mBlackCell[i][j] = new QLabel;
-            mBlackCell[i][j]->setFixedHeight(50);
-            mBlackCell[i][j]->setFixedWidth(50);
+            mBlackCell[i][j]->setFixedHeight(CELL_SIZE);
+            mBlackCell[i][j]->setFixedWidth(CELL_SIZE);
 
             if(!isNumberEven(i + 1))
             {

@@ -29,8 +29,8 @@ namespace View
 
     private:
         bool isNumberEven(int number);
-
         void drawBoard();
+        QLabel* createCellName(const QString &cellName);
 
         QMainWindow *mMainWindow;
         QWidget *mMainWidget;
