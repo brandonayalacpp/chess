@@ -70,21 +70,21 @@ void ChessView::drawBoard()
     {
         for(int j = 0; j < BOARD_SIZE; ++j)
         {
-            //QLabel mBlackCell;
-            mBlackCell[i][j] = new QLabel;
-            mBlackCell[i][j]->setFixedHeight(CELL_SIZE);
-            mBlackCell[i][j]->setFixedWidth(CELL_SIZE);
+            //QLabel mCells;
+            mCells[i][j] = new QLabel;
+            mCells[i][j]->setFixedHeight(CELL_SIZE);
+            mCells[i][j]->setFixedWidth(CELL_SIZE);
 
             if(!isNumberEven(i + 1))
             {
                 if(isNumberEven(j + 1))
                 {
-                    mBlackCell[i][j]->setStyleSheet("QLabel { background-color : black; color : blue; }");
+                    mCells[i][j]->setStyleSheet("QLabel { background-color : black; color : blue; }");
 
                 }
                 else
                 {
-                    mBlackCell[i][j]->setStyleSheet("QLabel { background-color : white; color : blue; }");
+                    mCells[i][j]->setStyleSheet("QLabel { background-color : white; color : blue; }");
                 }
 
             }
@@ -92,16 +92,16 @@ void ChessView::drawBoard()
             {
                 if(!isNumberEven(j + 1))
                 {
-                    mBlackCell[i][j]->setStyleSheet("QLabel { background-color : black; color : blue; }");
+                    mCells[i][j]->setStyleSheet("QLabel { background-color : black; color : blue; }");
 
                 }
                 else
                 {
-                    mBlackCell[i][j]->setStyleSheet("QLabel { background-color : white; color : blue; }");
+                    mCells[i][j]->setStyleSheet("QLabel { background-color : white; color : blue; }");
                 }
             }
 
-            mLayoutBoard->addWidget(mBlackCell[i][j],i + 1,j + 1,1,1);
+            mLayoutBoard->addWidget(mCells[i][j],i + 1,j + 1,1,1);
         }
     }
 
