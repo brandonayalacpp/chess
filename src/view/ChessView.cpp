@@ -11,8 +11,7 @@ using namespace Common;
 ChessView::ChessView()
         :mMainWindow(new QMainWindow),
          mMainWidget(new QWidget),
-         mLayoutBoard(new QGridLayout),
-         mPawn(new QLabel)
+         mLayoutBoard(new QGridLayout)
 {
 
 }
@@ -42,7 +41,6 @@ QLabel* ChessView::createCellName(const QString &cellName)
     QLabel *cellNameLabel =  new QLabel;
     cellNameLabel->setAlignment(Qt::AlignCenter);
     cellNameLabel->setText(cellName);
-    cellNameLabel->setStyleSheet("font: 15pt;");
     cellNameLabel->setFixedHeight(CELL_SIZE);
     cellNameLabel->setFixedWidth(CELL_SIZE);
 

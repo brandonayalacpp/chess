@@ -35,8 +35,8 @@ namespace View
         QMainWindow *mMainWindow;
         QWidget *mMainWidget;
         QGridLayout *mLayoutBoard;
-        QLabel *mCells[BOARD_SIZE][BOARD_SIZE];
         QLabel *mPawn;
+        QLabel *mCells[BOARD_SIZE][BOARD_SIZE];
     };
 }
 
