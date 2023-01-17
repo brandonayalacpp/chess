@@ -14,14 +14,18 @@ ChessView::ChessView()
          mLayoutBoard(new QGridLayout),
          mPieceMap(new QMap<Piece,QString>)
 {
-
+    createView();
+}
+void ChessView::show()
+{
+    mMainWindow->show();
 }
 
-void ChessView::initView()
+void ChessView::createView()
 {
     mPieceMap->insert(Piece::PID_PAWN_DARK, "P");
     mPieceMap->insert(Piece::PID_EMPTY, " ");
-    drawBoard();
+    createBoard();
     mMainWidget->setLayout(mLayoutBoard);
     mMainWindow->setCentralWidget(mMainWidget);
     mMainWindow->show();
@@ -35,7 +39,6 @@ void ChessView::updateBoard(CoordinatePiece coordinate, Piece piece)
     int col = coordinate.col;
     QString stringPiece = (*mPieceMap)[piece];
     mCells[row][col]->setText(stringPiece);
-    //mCells[row][col]->setStyleSheet("QLabel{font-size: 22pt;}");
 
 
 }
@@ -57,11 +60,7 @@ QLabel* ChessView::createCellName(const QString &cellName)
 
 }
 
-
-
-
-
-void ChessView::drawBoard()
+void ChessView::createBoard()
 {
 
     QStringList columnNames = {"1","2","3","4","5","6","7","8"};

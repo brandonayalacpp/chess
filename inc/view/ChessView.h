@@ -17,9 +17,7 @@ namespace View
     Q_OBJECT
     public:
         ChessView();
-
-
-        void initView();
+        void show();
         void movePiece(Common::CoordinatePiece oldCoordinate, Common::CoordinatePiece newCoordinate);
 
     public slots:
@@ -27,8 +25,9 @@ namespace View
 
 
     private:
+        void createView();
+        void createBoard();
         bool isNumberEven(int number);
-        void drawBoard();
         QLabel* createCellName(const QString &cellName);
 
         QMainWindow *mMainWindow;

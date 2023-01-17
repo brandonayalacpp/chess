@@ -26,6 +26,7 @@ namespace Manager
                        Common::CoordinatePiece newCoordinate);
 
     private:
+        void setPieces();
         View::ChessView *mChessView;
         Model::BoardModel *mBoardModel;
     };
