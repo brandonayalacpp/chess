@@ -38,5 +38,13 @@ std::vector<Common::Piece> ChessManager::createPieces()
     std::vector<Common::Piece> pieces;
     pieces.push_back(pown);
 
+    position.row = 7;
+    position.col = 0;
+
+    pown.pieceName = PieceName::PN_PAWN_WHITE;
+    pown.position = position;
+
+    pieces.push_back(pown);
+
     return pieces;
 }

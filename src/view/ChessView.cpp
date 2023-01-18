@@ -139,8 +139,12 @@ QLabel* ChessView::createPiece(PieceName pieceName)
     {
         case PieceName::PN_PAWN_DARK:
             tempPiece = createPown();
-            tempPiece->setStyleSheet("QLabel { background-color : brown; color : blue; font-size: 22pt; }");
+            tempPiece->setStyleSheet("QLabel { background-color : black; color : white; font-size: 22pt; }");
             return tempPiece;
+    case PieceName::PN_PAWN_WHITE:
+            tempPiece = createPown();
+            tempPiece->setStyleSheet("QLabel { background-color : white; color : black; font-size: 22pt; }");
+        return tempPiece;
     }
 
     return nullptr;
