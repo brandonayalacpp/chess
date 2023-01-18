@@ -38,7 +38,7 @@ void ChessView::updateBoard(Piece piece)
     int row = piece.position.row;
     int col = piece.position.col;
     QLabel *pieceWidget = (*mPieceMap)[piece.pieceName];
-    mLayoutBoard->addWidget(pieceWidget,row + 1, col + 1, 1, 1);
+    mLayoutBoard->addWidget(pieceWidget,row + 1, col + 1, 1, 1, Qt::AlignCenter);
 }
 
 bool ChessView::isNumberEven(int number)
@@ -63,7 +63,7 @@ void ChessView::createBoard()
 
     QStringList columnNames = {"1","2","3","4","5","6","7","8"};
     QStringList rowNames = {"A","B","C","D","E","F","G","H"};
-
+    //mLayoutBoard->setAlignment(Qt::AlignCenter);
     for(int i =  1; i <= BOARD_SIZE ; ++i)
     {
         QLabel *columnName =  createCellName(columnNames[i-1]);
@@ -110,7 +110,7 @@ void ChessView::createBoard()
                 }
             }
 
-            mLayoutBoard->addWidget(mCells[i][j],i + 1,j + 1,1,1);
+            mLayoutBoard->addWidget(mCells[i][j],i + 1,j + 1,1,1, Qt::AlignCenter);
         }
     }
 
@@ -127,7 +127,7 @@ void ChessView::createPieces(const std::vector<Common::Piece> &pieces)
         QLabel* pieceWidget =  createPiece(piece.pieceName);
         row = piece.position.row;
         col = piece.position.col;
-        mLayoutBoard->addWidget(pieceWidget,row + 1,col + 1,1,1);
+        mLayoutBoard->addWidget(pieceWidget,row + 1,col + 1,1,1, Qt::AlignCenter);
         mPieceMap->insert(piece.pieceName,pieceWidget);
     }
 }
