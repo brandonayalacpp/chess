@@ -4,6 +4,8 @@
 #include <QLabel>
 #include <QDebug>
 #include <QMainWindow>
+#include <QApplication>
+#include <QDesktopWidget>
 
 using namespace View;
 using namespace Common;
@@ -26,6 +28,8 @@ void ChessView::createView()
     createBoard();
     mMainWidget->setLayout(mLayoutBoard);
     mMainWindow->setCentralWidget(mMainWidget);
+    mMainWindow->adjustSize();
+    mMainWindow->move(QApplication::desktop()->screen()->rect().center() - mMainWindow->rect().center());
     mMainWindow->show();
 }
 void ChessView::setBoard(const std::vector<Common::Piece> &pieces)
