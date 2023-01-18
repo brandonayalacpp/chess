@@ -3,6 +3,8 @@
 
 #include "inc/Common.h"
 
+#include <vector>
+
 namespace View
 {
     class ChessView;
@@ -19,14 +21,11 @@ namespace Manager
     {
     public:
         ChessManager(View::ChessView *chessView, Model::BoardModel *boardModel);
-
-        void init();
-
-        void movePiece(Common::CoordinatePiece oldCoordinate,
-                       Common::CoordinatePiece newCoordinate);
+        void setupGame();
+        void updateBoard(Common::Piece piece);
 
     private:
-        void setPieces();
+        std::vector<Common::Piece> createPieces();
         View::ChessView *mChessView;
         Model::BoardModel *mBoardModel;
     };

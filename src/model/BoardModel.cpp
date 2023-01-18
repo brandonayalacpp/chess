@@ -2,20 +2,33 @@
 
 using namespace Model;
 
-void BoardModel::initBoardModel()
-{}
-Piece BoardModel::retrievePiece(CoordinatePiece coordinate)
+void BoardModel::setBoard(const std::vector<Piece> &pieces)
 {
-    return Piece::PID_EMPTY;
+    int row;
+    int col;
+    for(int i = 0; i < pieces.size(); ++i)
+    {
+        row = pieces[i].position.row;
+        col = pieces[i].position.col;
+
+        mBoard[row][col] = pieces[i];
+    }
+
+    emit notifySetBoard(pieces);
+}
+Piece BoardModel::retrievePiece(Position position)
+{
+    return mBoard[position.row][position.col];
 }
 
-void BoardModel::setPiece(CoordinatePiece coordinatePiece, Piece piece)
+void BoardModel::updateBoard(Piece piece)
 {
-    int row = coordinatePiece.row;
-    int col = coordinatePiece.col;
+    int row = piece.position.row;
+    int col = piece.position.col;
 
     mBoard[row][col] = piece;
-    emit updateBoard(coordinatePiece, piece);
+
+    emit notifyUpdateBoard(piece);
 }
 
 

@@ -24,7 +24,7 @@ public:
 
     void init()
     {
-        mChessManager->init();
+        mChessManager->setupGame();
     }
 
 private:

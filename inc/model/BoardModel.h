@@ -13,12 +13,13 @@ namespace Model
     {
     Q_OBJECT
     public:
-        void initBoardModel();
-        Piece retrievePiece(CoordinatePiece coordinate);
-        void setPiece(CoordinatePiece coordinatePiece, Piece piece);
+        void setBoard(const std::vector<Piece> &pieces);
+        void updateBoard(Piece piece);
+        Piece retrievePiece(Position position);
 
     signals:
-        void updateBoard(CoordinatePiece coordinatePiece, Piece Piece);
+        void notifySetBoard(const std::vector<Piece> &pieces);
+        void notifyUpdateBoard(Piece Piece);
     private:
         Piece mBoard[BOARD_SIZE][BOARD_SIZE];
 

@@ -11,25 +11,32 @@ ChessManager::ChessManager(ChessView *chessView, BoardModel *boardModel)
      mBoardModel(boardModel)
 {}
 
-void ChessManager::init()
+void ChessManager::setupGame()
 {
-    QObject::connect(mBoardModel, &BoardModel::updateBoard, mChessView, &ChessView::updateBoard);
-    setPieces();
+    QObject::connect(mBoardModel, &BoardModel::notifySetBoard, mChessView, &ChessView::setBoard);
+    QObject::connect(mBoardModel, &BoardModel::notifyUpdateBoard, mChessView, &ChessView::updateBoard);
+    std::vector<Common::Piece> pieces =  createPieces();
+    mBoardModel->setBoard(pieces);
     mChessView->show();
+}
 
+void ChessManager::updateBoard(Common::Piece piece)
+{
 
 }
 
-void ChessManager::movePiece(CoordinatePiece oldCoordinate, CoordinatePiece newCoordinate)
-{}
-
-void ChessManager::setPieces()
+std::vector<Common::Piece> ChessManager::createPieces()
 {
-    CoordinatePiece coordinate;
-    coordinate.row = 0;
-    coordinate.col = 0;
+    Position position;
+    position.row = 0;
+    position.col = 0;
 
-    Piece pown = Piece::PID_PAWN_DARK;
-    mBoardModel->setPiece(coordinate,pown);
+    Piece pown;
+    pown.pieceName = PieceName::PN_PAWN_DARK;
+    pown.position = position;
 
+    std::vector<Common::Piece> pieces;
+    pieces.push_back(pown);
+
+    return pieces;
 }

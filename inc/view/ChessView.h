@@ -18,15 +18,17 @@ namespace View
     public:
         ChessView();
         void show();
-        void movePiece(Common::CoordinatePiece oldCoordinate, Common::CoordinatePiece newCoordinate);
 
     public slots:
-        void updateBoard(Common::CoordinatePiece coordinate, Common::Piece piece);
-
+        void setBoard(const std::vector<Common::Piece> &pieces);
+        void updateBoard(Common::Piece piece);
 
     private:
         void createView();
         void createBoard();
+        void createPieces(const std::vector<Common::Piece> &pieces);
+        QLabel* createPiece(Common::PieceName pieceName);
+        QLabel* createPown();
         bool isNumberEven(int number);
         QLabel* createCellName(const QString &cellName);
 
@@ -35,7 +37,7 @@ namespace View
         QGridLayout *mLayoutBoard;
         QLabel *mPawn;
         QLabel *mCells[BOARD_SIZE][BOARD_SIZE];
-        QMap<Common::Piece, QString> *mPieceMap;
+        QMap<Common::PieceName, QLabel*> *mPieceMap;
     };
 }
 

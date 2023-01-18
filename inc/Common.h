@@ -3,17 +3,23 @@
 
 namespace Common
 {
-    enum Piece
+    enum PieceName
     {
-        PID_EMPTY,
-        PID_PAWN_WHITE,
-        PID_PAWN_DARK
+        PN_EMPTY,
+        PN_PAWN_WHITE,
+        PN_PAWN_DARK
     };
 
-    struct CoordinatePiece
+    struct Position
     {
         int row;
         int col;
+    };
+
+    struct Piece
+    {
+        PieceName pieceName;
+        Position position;
     };
 
 
@@ -25,5 +31,6 @@ namespace Common
 #define INDEX_TOP_EDGE 0
 #define INDEX_BOTTOM_EDGE 9
 #define CELL_SIZE 90
+#define PIECE_SIZE 70
 
 #endif // COMMON_H

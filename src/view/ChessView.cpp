@@ -12,7 +12,7 @@ ChessView::ChessView()
         :mMainWindow(new QMainWindow),
          mMainWidget(new QWidget),
          mLayoutBoard(new QGridLayout),
-         mPieceMap(new QMap<Piece,QString>)
+         mPieceMap(new QMap<PieceName,QLabel*>)
 {
     createView();
 }
@@ -23,24 +23,22 @@ void ChessView::show()
 
 void ChessView::createView()
 {
-    mPieceMap->insert(Piece::PID_PAWN_DARK, "P");
-    mPieceMap->insert(Piece::PID_EMPTY, " ");
     createBoard();
     mMainWidget->setLayout(mLayoutBoard);
     mMainWindow->setCentralWidget(mMainWidget);
     mMainWindow->show();
 }
-void ChessView::movePiece(CoordinatePiece oldCoordinate, CoordinatePiece newCoordinate)
-{}
-
-void ChessView::updateBoard(CoordinatePiece coordinate, Piece piece)
+void ChessView::setBoard(const std::vector<Common::Piece> &pieces)
 {
-    int row = coordinate.row;
-    int col = coordinate.col;
-    QString stringPiece = (*mPieceMap)[piece];
-    mCells[row][col]->setText(stringPiece);
+    createPieces(pieces);
+}
 
-
+void ChessView::updateBoard(Piece piece)
+{
+    int row = piece.position.row;
+    int col = piece.position.col;
+    QLabel *pieceWidget = (*mPieceMap)[piece.pieceName];
+    mLayoutBoard->addWidget(pieceWidget,row + 1, col + 1, 1, 1);
 }
 
 bool ChessView::isNumberEven(int number)
@@ -117,5 +115,51 @@ void ChessView::createBoard()
     }
 
 }
+
+void ChessView::createPieces(const std::vector<Common::Piece> &pieces)
+{
+    int row;
+    int col;
+
+    for(int i = 0; i < pieces.size(); ++i)
+    {
+        Piece piece = pieces[i];
+        QLabel* pieceWidget =  createPiece(piece.pieceName);
+        row = piece.position.row;
+        col = piece.position.col;
+        mLayoutBoard->addWidget(pieceWidget,row + 1,col + 1,1,1);
+        mPieceMap->insert(piece.pieceName,pieceWidget);
+    }
+}
+
+QLabel* ChessView::createPiece(PieceName pieceName)
+{
+    QLabel *tempPiece;
+    switch(pieceName)
+    {
+        case PieceName::PN_PAWN_DARK:
+            tempPiece = createPown();
+            tempPiece->setStyleSheet("QLabel { background-color : brown; color : blue; font-size: 22pt; }");
+            return tempPiece;
+    }
+
+    return nullptr;
+}
+
+QLabel* ChessView::createPown()
+{
+    QLabel *pown = new QLabel;
+    pown->setFixedHeight(PIECE_SIZE);
+    pown->setFixedWidth(PIECE_SIZE);
+    pown->setAlignment(Qt::AlignCenter);
+    pown->setText("P");
+
+    return pown;
+}
+
+
+
+
+
 
 
