@@ -88,12 +88,12 @@ void ChessView::createBoard()
             {
                 if(isNumberEven(j + 1))
                 {
-                    mCells[i][j]->setStyleSheet("QLabel { background-color : black; color : blue; font-size: 22pt; }");
+                    mCells[i][j]->setStyleSheet("QLabel { background-color : green;  }");
 
                 }
                 else
                 {
-                    mCells[i][j]->setStyleSheet("QLabel { background-color : white; color : blue; font-size: 22pt; }");
+                    mCells[i][j]->setStyleSheet("QLabel { background-color : gray; }");
                 }
 
             }
@@ -101,12 +101,12 @@ void ChessView::createBoard()
             {
                 if(!isNumberEven(j + 1))
                 {
-                    mCells[i][j]->setStyleSheet("QLabel { background-color : black; color : blue; }");
+                    mCells[i][j]->setStyleSheet("QLabel { background-color : green; }");
 
                 }
                 else
                 {
-                    mCells[i][j]->setStyleSheet("QLabel { background-color : white; color : blue; }");
+                    mCells[i][j]->setStyleSheet("QLabel { background-color : gray;}");
                 }
             }
 
