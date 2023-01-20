@@ -5,10 +5,11 @@
 
 #include "inc/Common.h"
 
-class QGridLayout;
+class QHBoxLayout;
 class QLabel;
 class QDebug;
 class QMainWindow;
+class BoardView;
 
 namespace View
 {
@@ -25,16 +26,14 @@ namespace View
 
     private:
         void createView();
-        void createBoard();
         void createPieces(const std::vector<Common::Piece> &pieces);
         QLabel* createPiece(Common::PieceName pieceName);
         QLabel* createPown();
-        bool isNumberEven(int number);
-        QLabel* createCellName(const QString &cellName);
+
 
         QMainWindow *mMainWindow;
         QWidget *mMainWidget;
-        QGridLayout *mLayoutBoard;
+        BoardView *mBoardView;
         QLabel *mPawn;
         QLabel *mCells[BOARD_SIZE][BOARD_SIZE];
         QMap<Common::PieceName, QLabel*> *mPieceMap;
