@@ -16,8 +16,7 @@ using namespace Common;
 ChessView::ChessView()
         :mMainWindow(new QMainWindow),
          mMainWidget(new QWidget),
-         mBoardView(new BoardView),
-         mPieceMap(new QMap<PieceName,PieceView*>)
+         mBoardView(new BoardView)
 {
     createView();
 }
@@ -76,18 +75,6 @@ QLabel* ChessView::createPiece(Piece piece)
 
     return nullptr;
 }
-
-QLabel* ChessView::createPown()
-{
-    QLabel *pown = new QLabel;
-    pown->setFixedHeight(PIECE_SIZE);
-    pown->setFixedWidth(PIECE_SIZE);
-    pown->setAlignment(Qt::AlignCenter);
-    pown->setText("P");
-
-    return pown;
-}
-
 
 
 

@@ -9,6 +9,7 @@ class PieceView : public QLabel
 {
 public:
     PieceView(QString displayText, Common::Piece piece);
+    //void mousePressEvent(QMouseEvent*);
 private:
     void createPiece();
 

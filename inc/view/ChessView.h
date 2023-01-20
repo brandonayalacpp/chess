@@ -35,9 +35,6 @@ namespace View
         QMainWindow *mMainWindow;
         QWidget *mMainWidget;
         BoardView *mBoardView;
-        QLabel *mPawn;
-        QLabel *mCells[BOARD_SIZE][BOARD_SIZE];
-        QMap<Common::PieceName, PieceView*> *mPieceMap;
     };
 }
 
