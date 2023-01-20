@@ -23,3 +23,9 @@ void PieceView::createPiece()
         setStyleSheet("QLabel { background-color : white; color : black; font-size: 22pt; }");
     }
 }
+
+void PieceView::mousePressEvent(QMouseEvent*)
+{
+    emit notifyPieceClicked(this);
+}
+

@@ -55,7 +55,7 @@ void ChessView::createPieces(const std::vector<Common::Piece> &pieces)
     for(int i = 0; i < pieces.size(); ++i)
     {
         Piece piece = pieces[i];
-        QLabel* pieceWidget =  createPiece(piece);
+        PieceView* pieceWidget =  createPiece(piece);
         row = piece.position.row;
         col = piece.position.col;
         mBoardView->setPiece(pieceWidget,row ,col);
@@ -63,7 +63,7 @@ void ChessView::createPieces(const std::vector<Common::Piece> &pieces)
     }
 }
 
-QLabel* ChessView::createPiece(Piece piece)
+PieceView* ChessView::createPiece(Piece piece)
 {
     PieceView *tempPiece;
     switch(piece.pieceName)

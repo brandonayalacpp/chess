@@ -28,8 +28,7 @@ namespace View
     private:
         void createView();
         void createPieces(const std::vector<Common::Piece> &pieces);
-        QLabel* createPiece(Common::Piece piece);
-        QLabel* createPown();
+        PieceView* createPiece(Common::Piece piece);
 
 
         QMainWindow *mMainWindow;

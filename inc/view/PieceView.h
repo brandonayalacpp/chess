@@ -7,9 +7,12 @@
 
 class PieceView : public QLabel
 {
+    Q_OBJECT
 public:
     PieceView(QString displayText, Common::Piece piece);
-    //void mousePressEvent(QMouseEvent*);
+    void mousePressEvent(QMouseEvent*);
+signals:
+    void notifyPieceClicked(PieceView *pieceView);
 private:
     void createPiece();
 

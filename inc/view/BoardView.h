@@ -6,14 +6,19 @@
 #include <inc/Common.h>
 
 
+
 class QGridLayout;
 class QLabel;
+class PieceView;
 
 class BoardView : public QWidget
 {
+    Q_OBJECT
 public:
     BoardView();
-    void setPiece(QLabel *piece, int row, int col);
+    void setPiece(PieceView *piece, int row, int col);
+public slots:
+    void onPieceClicked(PieceView *pieceView);
 
 private:
     void createBoard();

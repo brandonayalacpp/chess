@@ -2,6 +2,9 @@
 
 #include <QLabel>
 #include <QGridLayout>
+#include <QDebug>
+
+#include "inc/view/PieceView.h"
 
 BoardView::BoardView()
     :mLayoutBoard(new QGridLayout)
@@ -10,13 +13,11 @@ BoardView::BoardView()
     createBoard();
 }
 
-void BoardView::setPiece(QLabel *piece, int row, int col)
+void BoardView::setPiece(PieceView *piece, int row, int col)
 {
+    connect(piece,&PieceView::notifyPieceClicked,this, &BoardView::onPieceClicked);
     mLayoutBoard->addWidget(piece,row + 1,col + 1,1,1, Qt::AlignCenter);
 }
-
-
-
 
 void BoardView::createBoard()
 {
@@ -73,6 +74,11 @@ void BoardView::createBoard()
             mLayoutBoard->addWidget(mCells[i][j],i + 1,j + 1,1,1, Qt::AlignCenter);
         }
     }
+}
+
+void BoardView::onPieceClicked(PieceView *pieceView)
+{
+    qDebug() << "Piece cliecked" << pieceView;
 }
 
 QLabel* BoardView::createCellName(const QString &cellName)
