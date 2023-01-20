@@ -2,6 +2,7 @@
 #define PIECEVIEW_H
 
 #include <QLabel>
+#include <QMap>
 #include "inc/Common.h"
 
 
@@ -9,15 +10,15 @@ class PieceView : public QLabel
 {
     Q_OBJECT
 public:
-    PieceView(QString displayText, Common::Piece piece);
+    PieceView(Common::Piece piece);
     void mousePressEvent(QMouseEvent*);
 signals:
     void notifyPieceClicked(PieceView *pieceView);
 private:
     void createPiece();
 
-    QString mDisplayText;
     Common::Piece mPiece;
+    QMap<Common::ColorPiece,QString> mStylesMap;
 };
 
 

@@ -69,7 +69,7 @@ PieceView* ChessView::createPiece(Piece piece)
     switch(piece.pieceName)
     {
         case PieceName::PN_PAWN:
-            tempPiece = new PieceView("P",piece);
+            tempPiece = new PieceView(piece);
             return tempPiece;
     }
 

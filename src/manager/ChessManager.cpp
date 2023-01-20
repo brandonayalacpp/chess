@@ -33,8 +33,11 @@ std::vector<Common::Piece> ChessManager::createPieces()
 
     Piece pown;
     pown.pieceName = PieceName::PN_PAWN;
+    pown.pieceString = "P";
     pown.position = position;
     pown.colorPiece = ColorPiece::CP_BLACK;
+    pown.pieceStyle = "QLabel { background-color : black; color : white; font-size: 22pt; }";
+
 
     std::vector<Common::Piece> pieces;
     pieces.push_back(pown);
@@ -43,6 +46,8 @@ std::vector<Common::Piece> ChessManager::createPieces()
     position.col = 0;
     pown.position = position;
     pown.colorPiece = ColorPiece::CP_WHITE;
+    pown.pieceStyle = "QLabel { background-color : white; color : black; font-size: 22pt; }";
+
     pieces.push_back(pown);
 
     return pieces;

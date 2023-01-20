@@ -1,6 +1,8 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#include <string>
+
 namespace Common
 {
     enum PieceName
@@ -24,8 +26,10 @@ namespace Common
     struct Piece
     {
         PieceName pieceName;
+        std::string pieceString;
         Position position;
         ColorPiece colorPiece;
+        std::string pieceStyle;
     };
 
 
