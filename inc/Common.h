@@ -6,8 +6,13 @@ namespace Common
     enum PieceName
     {
         PN_EMPTY,
-        PN_PAWN_WHITE,
-        PN_PAWN_DARK
+        PN_PAWN,
+    };
+
+    enum ColorPiece
+    {
+        CP_WHITE,
+        CP_BLACK
     };
 
     struct Position
@@ -20,6 +25,7 @@ namespace Common
     {
         PieceName pieceName;
         Position position;
+        ColorPiece colorPiece;
     };
 
 

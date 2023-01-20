@@ -10,6 +10,7 @@ class QLabel;
 class QDebug;
 class QMainWindow;
 class BoardView;
+class PieceView;
 
 namespace View
 {
@@ -27,7 +28,7 @@ namespace View
     private:
         void createView();
         void createPieces(const std::vector<Common::Piece> &pieces);
-        QLabel* createPiece(Common::PieceName pieceName);
+        QLabel* createPiece(Common::Piece piece);
         QLabel* createPown();
 
 
@@ -36,7 +37,7 @@ namespace View
         BoardView *mBoardView;
         QLabel *mPawn;
         QLabel *mCells[BOARD_SIZE][BOARD_SIZE];
-        QMap<Common::PieceName, QLabel*> *mPieceMap;
+        QMap<Common::PieceName, PieceView*> *mPieceMap;
     };
 }
 

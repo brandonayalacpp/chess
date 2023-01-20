@@ -8,6 +8,7 @@
 #include <QDesktopWidget>
 
 #include "inc/view/BoardView.h"
+#include "inc/view/PieceView.h"
 
 using namespace View;
 using namespace Common;
@@ -16,7 +17,7 @@ ChessView::ChessView()
         :mMainWindow(new QMainWindow),
          mMainWidget(new QWidget),
          mBoardView(new BoardView),
-         mPieceMap(new QMap<PieceName,QLabel*>)
+         mPieceMap(new QMap<PieceName,PieceView*>)
 {
     createView();
 }
@@ -55,27 +56,22 @@ void ChessView::createPieces(const std::vector<Common::Piece> &pieces)
     for(int i = 0; i < pieces.size(); ++i)
     {
         Piece piece = pieces[i];
-        QLabel* pieceWidget =  createPiece(piece.pieceName);
+        QLabel* pieceWidget =  createPiece(piece);
         row = piece.position.row;
         col = piece.position.col;
         mBoardView->setPiece(pieceWidget,row ,col);
-        mPieceMap->insert(piece.pieceName,pieceWidget);
+        //mPieceMap->insert(piece.pieceName,pieceWidget);
     }
 }
 
-QLabel* ChessView::createPiece(PieceName pieceName)
+QLabel* ChessView::createPiece(Piece piece)
 {
-    QLabel *tempPiece;
-    switch(pieceName)
+    PieceView *tempPiece;
+    switch(piece.pieceName)
     {
-        case PieceName::PN_PAWN_DARK:
-            tempPiece = createPown();
-            tempPiece->setStyleSheet("QLabel { background-color : black; color : white; font-size: 22pt; }");
+        case PieceName::PN_PAWN:
+            tempPiece = new PieceView("P",piece);
             return tempPiece;
-    case PieceName::PN_PAWN_WHITE:
-            tempPiece = createPown();
-            tempPiece->setStyleSheet("QLabel { background-color : white; color : black; font-size: 22pt; }");
-        return tempPiece;
     }
 
     return nullptr;

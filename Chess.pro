@@ -14,7 +14,8 @@ SOURCES += \
     src/manager/ChessManager.cpp \
     src/model/BoardModel.cpp \
     src/view/BoardView.cpp \
-    src/view/ChessView.cpp
+    src/view/ChessView.cpp \
+    src/view/PieceView.cpp
 
 HEADERS += \
     inc/Common.h \
@@ -22,6 +23,7 @@ HEADERS += \
     inc/model/BoardModel.h \
     inc/view/BoardView.h \
     inc/view/ChessView.h \
+    inc/view/PieceView.h \
     mainwindow.h
 
 # Default rules for deployment.
